@@ -1,0 +1,11 @@
+.contenedor-contador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgb(150, 223, 247);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid;
+    box-shadow: 3px 4px #888888;
+}
