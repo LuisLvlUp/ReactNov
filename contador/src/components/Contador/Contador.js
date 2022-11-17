@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import './Contador.css'
 
-export const Contador = ( { contador, setContador } ) => {
+export const Contador = ({ contador, setContador }) => {
 
   const [estado, setEstado] = useState(true)
 
@@ -11,7 +11,6 @@ export const Contador = ( { contador, setContador } ) => {
   // El componente se actualiza
 
   useEffect(() => {
-    console.log('Contador: ' + contador)
     document.title = `Contador: ${contador}`
   }, [contador])
 
@@ -44,9 +43,19 @@ export const Contador = ( { contador, setContador } ) => {
         </Button>
       </div>
       <div>
-        <Button variant={ estado ? 'primary' : 'warning'  } onClick={toggle}>
+        {/* <Button variant={estado ? 'primary' : 'warning'} onClick={toggle}>
           Estado: {`${estado}`}
-        </Button>
+        </Button> */}
+        {
+          estado ?
+            <Button variant={'danger'} onClick={toggle}>
+              Estado: {`${estado}`}
+            </Button>
+            :
+            <Button variant={'info'} onClick={toggle}>
+              Estado: {`${estado}`}
+            </Button>
+        }
       </div>
     </>
   )
