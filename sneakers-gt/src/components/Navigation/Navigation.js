@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import { Link } from 'react-router-dom';
+import './Navigation.css'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -115,14 +116,14 @@ function Navigation() {
                     >
                         SGT
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        <Link to={'/home'} className={'MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-l5sm2o-MuiButtonBase-root-MuiMenuItem-root'}>
+                    <Box sx={{ paddingRight: '3%', gap: '3%', justifyContent: 'flex-end', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Link to={'/home'} className={'custom-link'}>
                             Home
                         </Link>
-                        <Link to={'/catalogo'} className={'MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-l5sm2o-MuiButtonBase-root-MuiMenuItem-root'}>
+                        <Link to={'/catalogo'} className={'custom-link'}>
                             Catalogo
                         </Link>
-                        <Link to={'/new-product'} className={'MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-l5sm2o-MuiButtonBase-root-MuiMenuItem-root'}>
+                        <Link to={'/new-product'} className={'custom-link'}>
                             Nuevo Producto
                         </Link>
                     </Box>

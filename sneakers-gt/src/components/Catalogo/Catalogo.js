@@ -1,30 +1,30 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-export const Catalogo = () => {
+export const Catalogo = ({ productos }) => {
   return (
-    <div>
-      <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          test
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-    </div>
+      <div className='row'>
+        {
+          productos.map((producto) => (
+            <div className='col-4 d-flex align-items-stretch mb-3' key={producto.id}>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={producto.imagen} />
+                <hr></hr>
+                <Card.Body>
+                  <Card.Title>{producto.silueta}</Card.Title>
+                  <Card.Text>
+                    {producto.marca}
+                  </Card.Text>
+                  <Card.Text>
+                    ${producto.precio}
+                  </Card.Text>
+                  <Button variant="primary">Ver más</Button>
+                </Card.Body>
+              </Card>
+            </div>
+          ))
+        }
+      </div>
   )
 }
