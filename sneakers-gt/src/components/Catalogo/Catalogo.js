@@ -1,8 +1,23 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import EditIcon from '@mui/icons-material/Edit';
 
-export const Catalogo = ({ productos }) => {
+export const Catalogo = ({ productos, setProductos }) => {
+
+  const editarProducto = (id) => {
+    let nuevoPrecio = prompt('Introduzca nuevo precio')
+
+    let productosEditados = productos.map((item) => {
+        if(id === item.id){
+            return { ...item, precio: nuevoPrecio }
+        }
+        return item 
+    })
+
+    setProductos( productosEditados )
+  }
+
   return (
       <div className='row'>
         {
@@ -19,7 +34,7 @@ export const Catalogo = ({ productos }) => {
                   <Card.Text>
                     ${producto.precio}
                   </Card.Text>
-                  <Button variant="primary">Ver más</Button>
+                  <Button onClick={() => editarProducto(producto.id)} variant="primary"> <EditIcon /></Button>
                 </Card.Body>
               </Card>
             </div>

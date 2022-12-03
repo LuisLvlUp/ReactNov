@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '@mui/material/Button';
 import Navigation from '../Navigation/Navigation';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -10,7 +10,12 @@ import { zapatos } from '../../shared/data';
 
 export const Main = () => {
 
-    const [productos, setProductos] = useState(zapatos)
+    const [productos, setProductos] = useState(JSON.parse(localStorage.getItem('productos')) || zapatos)
+
+    useEffect(() => {
+        localStorage.setItem('productos', JSON.stringify(productos))
+    }, [productos])
+    
 
     return (
         <>
@@ -18,7 +23,7 @@ export const Main = () => {
             <Container sx={{marginTop: '4rem'}}>
                 <Routes>
                     <Route path="/" element={<Home productos={productos} setProductos={setProductos} />} />
-                    <Route path="/catalogo" element={<Catalogo productos={productos} />} />
+                    <Route path="/catalogo" element={<Catalogo productos={productos} setProductos={setProductos} />} />
                     <Route path="/new-product" element={<NewProduct productos={productos} setProductos={setProductos} />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
