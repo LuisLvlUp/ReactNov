@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import EditIcon from '@mui/icons-material/Edit';
+import { ThemeContext } from '../../context/themeContext';
 
 export const Catalogo = ({ productos, setProductos }) => {
 
@@ -17,6 +18,9 @@ export const Catalogo = ({ productos, setProductos }) => {
 
     setProductos( productosEditados )
   }
+
+  //Context
+  const [mode, setMode] = useContext(ThemeContext)
 
   return (
       <div className='row'>
@@ -34,7 +38,7 @@ export const Catalogo = ({ productos, setProductos }) => {
                   <Card.Text>
                     ${producto.precio}
                   </Card.Text>
-                  <Button onClick={() => editarProducto(producto.id)} variant="primary"> <EditIcon /></Button>
+                  <Button onClick={() => editarProducto(producto.id)} variant={ mode ? 'dark' : 'primary' }> <EditIcon /></Button>
                 </Card.Body>
               </Card>
             </div>

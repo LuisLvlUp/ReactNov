@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,19 +8,21 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import { Link } from 'react-router-dom';
 import './Navigation.css'
+import LightModeIcon from '@mui/icons-material/LightMode';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import { ThemeContext } from '../../context/themeContext';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navigation() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -37,8 +39,10 @@ function Navigation() {
         setAnchorElUser(null);
     };
 
+    const [mode, setMode] = useContext(ThemeContext)
+
     return (
-        <AppBar position="static">
+        <AppBar sx={ mode && {backgroundColor: '#1c1e21'}} position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <SportsHandballIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -126,6 +130,12 @@ function Navigation() {
                         <Link to={'/new-product'} className={'custom-link'}>
                             Nuevo Producto
                         </Link>
+                        <div className='dark-mode' onClick={() => setMode( !mode )}>
+                        {                         
+                            mode ? <LightModeIcon /> : <ModeNightIcon />   
+                        }
+                        </div>
+                        
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
