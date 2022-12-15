@@ -42,7 +42,7 @@ function Navigation() {
     const [mode, setMode] = useContext(ThemeContext)
 
     return (
-        <AppBar sx={ mode && {backgroundColor: '#1c1e21'}} position="static">
+        <AppBar sx={mode ? { backgroundColor: '#1c1e21' } : {}} position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <SportsHandballIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -98,6 +98,9 @@ function Navigation() {
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">Productos</Typography>
+                            </MenuItem>                            
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">Todo List</Typography>
                             </MenuItem>
                         </Menu>
                     </Box>
@@ -130,12 +133,15 @@ function Navigation() {
                         <Link to={'/new-product'} className={'custom-link'}>
                             Nuevo Producto
                         </Link>
-                        <div className='dark-mode' onClick={() => setMode( !mode )}>
-                        {                         
-                            mode ? <LightModeIcon /> : <ModeNightIcon />   
-                        }
+                        <Link to={'/todo-list'} className={'custom-link'}>
+                             Todo List
+                        </Link>
+                        <div className='dark-mode' onClick={() => setMode(!mode)}>
+                            {
+                                mode ? <LightModeIcon /> : <ModeNightIcon />
+                            }
                         </div>
-                        
+
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
