@@ -1,4 +1,5 @@
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 const port = 3000
 
@@ -21,6 +22,7 @@ let animales = [
 ]
 
 app.use(express.json())
+app.use(morgan('dev'))
 
 app.get('/', (req, res) => {
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
@@ -78,10 +80,15 @@ app.put('/api/animales/:id', (req, res) => {
 
 // ELIMINAR ANIMAL
 app.delete('/api/animales/:id', (req, res) => {
-    animales = animales.filter((animal) => req.params.id != animal.id)
-    res.json({result: 1})
+    let animalesTmp = animales.filter((animal) => req.params.id != animal.id)
+    
+    if(animalesTmp.length == animales.length){
+        res.status(404).json({result: "Animal not found"})
+    }else{
+        animales = animalesTmp
+        res.status(200).json({result: 1})
+    } 
 })
-
 
 
 app.listen(port, () => {
