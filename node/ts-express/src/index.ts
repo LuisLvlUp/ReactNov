@@ -29,6 +29,7 @@ class Server {//esta clase iniciara al servidor
         this.app.use('/', indexRoutes);
         this.app.use('/api', apiRoutes);
         this.app.use('/api/animales', animalRoutes);
+        // this.app.use('/api/producto', productoRoutes);
     }
     start():void {//inicializar el servidor -> para que el servidor empiece a escuchar
         this.app.listen(this.app.get('port'),() => {  

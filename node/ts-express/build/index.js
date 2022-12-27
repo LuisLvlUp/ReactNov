@@ -28,6 +28,7 @@ class Server {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/api', apiRoutes_1.default);
         this.app.use('/api/animales', animalRoutes_1.default);
+        // this.app.use('/api/producto', productoRoutes);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

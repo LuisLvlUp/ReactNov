@@ -1,5 +1,5 @@
 import { Router } from 'express';//definir un enrutador
-import { animalController } from '../controllers/animalControllers';
+import animalController from '../controllers/animalControllers';
 
 class AnimalRoutes{
 

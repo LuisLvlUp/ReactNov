@@ -11,6 +11,5 @@ class IndexController {
         res.send('Hola') 
     }
     
-
 }
 export const indexController = new IndexController();

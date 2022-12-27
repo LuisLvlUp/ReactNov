@@ -2,26 +2,26 @@ GET http://localhost:3000/api/animales HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/animales/1 HTTP/1.1
+GET http://localhost:3000/api/animales/3 HTTP/1.1
 
 ###
 
 POST http://localhost:3000/api/animales HTTP/1.1
-content-type: application/jsons
+content-type: application/json
 
 {
-    "nombre": "Hormiga",
-    "tipo": "Insecto"
+    "nombre": "Pez Payazo",
+    "tipo": "Pez"
 }
 
 ###
 
-PUT http://localhost:3000/api/animales/4 HTTP/1.1
+PUT http://localhost:3000/api/animales/3 HTTP/1.1
 content-type: application/json
 
 {
-    "nombre": "Mono",
-    "tipo": "Mamifero"
+    "nombre": "Guacamaya",
+    "tipo": "Ave"
 }
 
 ### 
