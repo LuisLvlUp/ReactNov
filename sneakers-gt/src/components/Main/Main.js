@@ -8,16 +8,20 @@ import { Container } from '@mui/material';
 import { zapatos } from '../../shared/data';
 import { ThemeContext } from '../../context/themeContext';
 import { Todos } from '../Todos/Todos';
+import { API_URL } from '../../shared/API_URL';
 
 export const Main = () => {
 
-    const [productos, setProductos] = useState(JSON.parse(localStorage.getItem('productos')) || zapatos)
+    const [productos, setProductos] = useState([])
     const [mode, setMode] = useState(false)
     const count = useRef(0)
 
     useEffect(() => {
-        localStorage.setItem('productos', JSON.stringify(productos))
-    }, [productos])
+        // localStorage.setItem('productos', JSON.stringify(productos))
+        fetch(`${API_URL}/sneakers`)
+        .then(response => response.json())
+        .then(data => setProductos(data));
+    }, [])
 
     useEffect(() => {
         document.body.style.backgroundColor = mode ? 'black' : 'white';

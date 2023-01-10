@@ -1,0 +1,34 @@
+GET http://localhost:3001/api/sneakers HTTP/1.1
+
+###
+
+GET http://localhost:3001/api/sneakers/3 HTTP/1.1
+
+###
+
+POST http://localhost:3001/api/sneakers HTTP/1.1
+content-type: application/json
+
+{
+    "silueta": "Superstar",
+    "marca": "Adidas",
+    "imagen": "https://assets.adidas.com/images/w_600,f_auto,q_auto/4e894c2b76dd4c8e9013aafc016047af_9366/Superstar_Shoes_White_FV3284_01_standard.jpg",
+    "precio": 299
+}
+
+###
+
+PUT http://localhost:3001/api/sneakers/4 HTTP/1.1
+content-type: application/json
+
+{
+    "silueta": "Superstar 23",
+    "marca": "Adidas",
+    "imagen": "https://assets.adidas.com/images/w_600,f_auto,q_auto/4e894c2b76dd4c8e9013aafc016047af_9366/Superstar_Shoes_White_FV3284_01_standard.jpg",
+    "precio": 299
+}
+
+### 
+
+DELETE http://localhost:3001/api/sneakers/4 HTTP/1.1
+content-type: application/json

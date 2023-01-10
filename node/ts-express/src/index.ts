@@ -5,6 +5,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import apiRoutes from './routes/apiRoutes';
 import animalRoutes from './routes/animalRoutes';
+import sneakerRoutes from './routes/sneakerRoutes';
 
 class Server {//esta clase iniciara al servidor
 
@@ -18,7 +19,7 @@ class Server {//esta clase iniciara al servidor
 
     
     config () : void {//de tipo vacio
-        this.app.set('port',process.env.PORT ||3000);//el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
+        this.app.set('port',process.env.PORT || 3001);//el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
         //ese set es de app, es como si se le hubiera declarado una variable a app
         this.app.use(morgan('dev'));//el dev es para ver lo que estan pidiendo los clientes
         this.app.use(cors());//pedir los datos al servidor 
@@ -29,7 +30,7 @@ class Server {//esta clase iniciara al servidor
         this.app.use('/', indexRoutes);
         this.app.use('/api', apiRoutes);
         this.app.use('/api/animales', animalRoutes);
-        // this.app.use('/api/producto', productoRoutes);
+        this.app.use('/api/sneakers', sneakerRoutes);
     }
     start():void {//inicializar el servidor -> para que el servidor empiece a escuchar
         this.app.listen(this.app.get('port'),() => {  

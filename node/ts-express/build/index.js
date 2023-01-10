@@ -11,6 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const apiRoutes_1 = __importDefault(require("./routes/apiRoutes"));
 const animalRoutes_1 = __importDefault(require("./routes/animalRoutes"));
+const sneakerRoutes_1 = __importDefault(require("./routes/sneakerRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); //express() devuelve un objeto
@@ -18,7 +19,7 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.PORT || 3000); //el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
+        this.app.set('port', process.env.PORT || 3001); //el process es para que si ya exite un puerto definido se toma ese o sino agarra el 3000
         //ese set es de app, es como si se le hubiera declarado una variable a app
         this.app.use((0, morgan_1.default)('dev')); //el dev es para ver lo que estan pidiendo los clientes
         this.app.use((0, cors_1.default)()); //pedir los datos al servidor 
@@ -28,7 +29,7 @@ class Server {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/api', apiRoutes_1.default);
         this.app.use('/api/animales', animalRoutes_1.default);
-        // this.app.use('/api/producto', productoRoutes);
+        this.app.use('/api/sneakers', sneakerRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
