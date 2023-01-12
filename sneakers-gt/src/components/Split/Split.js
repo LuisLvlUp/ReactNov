@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Split = ({ left, right }) => {
     return (
-        <div className='row'>
+        <div className='row mt-5'>
             <div className='col-6'>
                 {left}
             </div>
