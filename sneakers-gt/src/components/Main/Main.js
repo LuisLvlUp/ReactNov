@@ -9,6 +9,7 @@ import { zapatos } from '../../shared/data';
 import { ThemeContext } from '../../context/themeContext';
 import { Todos } from '../Todos/Todos';
 import { API_URL } from '../../shared/API_URL';
+import { Butacas } from '../Butacas/Butacas';
 
 export const Main = () => {
 
@@ -19,11 +20,11 @@ export const Main = () => {
 
     useEffect(() => {
         // localStorage.setItem('productos', JSON.stringify(productos))
-        if (!loading) {
-            fetch(`${API_URL}/sneakers`)
-                .then(response => response.json())
-                .then(data => setProductos(data));
-        }
+        // if (!loading) {
+        //     fetch(`${API_URL}/sneakers`)
+        //         .then(response => response.json())
+        //         .then(data => setProductos(data));
+        // }
 
     }, [loading])
 
@@ -56,6 +57,7 @@ export const Main = () => {
                             setLoading={setLoading}
                         />} />
                     <Route path="/todo-list" element={<Todos />} />
+                    <Route path="/butacas" element={<Butacas />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Container>

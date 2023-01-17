@@ -98,7 +98,7 @@ function Navigation() {
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">Productos</Typography>
-                            </MenuItem>                            
+                            </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">Todo List</Typography>
                             </MenuItem>
@@ -134,7 +134,10 @@ function Navigation() {
                             Nuevo Producto
                         </Link>
                         <Link to={'/todo-list'} className={'custom-link'}>
-                             Todo List
+                            Todo List
+                        </Link>
+                        <Link to={'/butacas'} className={'custom-link'}>
+                            Butacas
                         </Link>
                         <div className='dark-mode' onClick={() => setMode(!mode)}>
                             {
